@@ -5,6 +5,7 @@ import                                       './App.css';
 import                                       'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard                        from './components/dashboard/Dashboard';
+import CreateWallet                     from './components/dashboard/operations/CreateWallet';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/create-wallet" element={<CreateWallet />} />
       </Routes>
     </BrowserRouter>
   );

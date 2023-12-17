@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import        { Link }      from 'react-router-dom';
+import DashboardItem        from './DashboardItem';
 
 class Dashboard extends Component {
     render() {
@@ -24,6 +25,8 @@ class Dashboard extends Component {
                                     <h1>27000 USD</h1>
                                 </div>
                             </div>
+                            <hr />
+                            <DashboardItem />
                         </div>
                     </div>
                 </div>

@@ -29,7 +29,7 @@ class CreateWallet extends Component {
             currentBalance:'',
         };
         axios.post(`http://localhost:8090/wallet`, newWallet).then((response) => {
-
+            this.props.history.push('/dashboard');
         }).catch((error) => {
 
         });

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import axios                from 'axios';
+import React, { Component }    from 'react';
+import        { createWallet } from '../../../actions/projectActions';
+import        { connect }      from 'react-redux';
 
 class CreateWallet extends Component {
 
@@ -28,11 +29,7 @@ class CreateWallet extends Component {
             priority:this.state.priority,
             currentBalance:'',
         };
-        axios.post(`http://localhost:8090/wallet`, newWallet).then((response) => {
-            this.props.history.push('/dashboard');
-        }).catch((error) => {
-
-        });
+        this.props.createWallet(newWallet, this.props.history);
         event.preventDefault();
     };
 
@@ -72,4 +69,4 @@ class CreateWallet extends Component {
     }
 }
 
-export default CreateWallet;
+export default connect(null, { createWallet })(CreateWallet);

@@ -1,11 +1,13 @@
-import { GET_ERRORS } from "../actions/types";
+import { GET_WALLETS } from "../actions/types";
 
-const initialState = {};
+const initialState = {
+    wallets:[]
+};
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case GET_ERRORS:
-            return action.payload;
+        case GET_WALLETS:
+            return {...state, wallets:action.payload};
             break;
         default:
             return state;

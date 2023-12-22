@@ -1,4 +1,4 @@
-import { GET_WALLETS } from "../actions/types";
+import { GET_WALLETS, DELETE_WALLET } from "../actions/types";
 
 const initialState = {
     wallets:[]
@@ -9,6 +9,11 @@ export default function(state = initialState, action) {
         case GET_WALLETS:
             return {...state, wallets:action.payload};
             break;
+
+        case DELETE_WALLET:
+            return {...state, wallets:state.wallets.filter(x => x.reference !== action.payload)};
+            break;
+
         default:
             return state;
             break;

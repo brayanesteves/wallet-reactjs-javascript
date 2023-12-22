@@ -1,6 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component }    from 'react';
+import        { Link }         from 'react-router-dom';
+import        { deleteWallet } from '../../actions/projectActions';
+import        { connect }      from 'react-redux';
+
 
 class DashboardItem extends Component {
+
+    delete() {
+        this.props.deleteWallet(this.props.wallet.reference);
+    }
+
     render() {
 
         const wallet = this.props.wallet;
@@ -30,11 +39,11 @@ class DashboardItem extends Component {
                                         <i className="fa fa-edit pr-1"> Update Account Info</i>
                                     </li>
                                 </a>
-                                <a href="/">
+                                <Link to="/dashboard" onClick={() => this.delete()}>
                                     <li className="list-group-item delete text-danger">
                                         <i className="fa fa-minus-circle pr-1"> Delete Account</i>
                                     </li>
-                                </a>
+                                </Link>
                             </ul>
                         </div>
                     </div>
@@ -44,4 +53,4 @@ class DashboardItem extends Component {
     }
 }
 
-export default DashboardItem;
+export default connect(null, { deleteWallet })(DashboardItem);

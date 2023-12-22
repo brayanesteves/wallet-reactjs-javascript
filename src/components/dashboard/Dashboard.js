@@ -15,6 +15,7 @@ class Dashboard extends Component {
         const wallets         = this.props.wallets;
         //console.log(wallets);
         const walletComponent = wallets.map(wallet => (<DashboardItem key={wallet.reference} wallet={wallet} />));
+        
         return (
             <div className="projects">
                 <div className="container">
@@ -37,7 +38,7 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                             <hr />
-                            {walletComponent}
+                            {walletComponent}                            
                         </div>
                     </div>
                 </div>

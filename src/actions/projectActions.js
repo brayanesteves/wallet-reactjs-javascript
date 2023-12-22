@@ -1,5 +1,5 @@
-import   axios                     from "axios";
-import { GET_ERRORS, GET_WALLETS } from "./types";
+import axios                                            from "axios";
+import       { DELETE_WALLET, GET_ERRORS, GET_WALLETS } from "./types";
 
 export const createWallet = (newWallet, history) => async dispath => {
     await axios.post(`http://localhost:8090/wallet`, newWallet).then((response) => {
@@ -10,10 +10,17 @@ export const createWallet = (newWallet, history) => async dispath => {
     });
 };
 
-export const getWallets = (newWallet, history) => async dispath => {
-    await axios.get(`http://localhost:8090/wallet/find-all-order-by-priority`, newWallet).then((response) => {
-    console.log(response);    
+export const getWallets = () => async dispath => {
+    await axios.get(`http://localhost:8090/wallet/find-all-order-by-priority`).then((response) => {
     dispath({ type:GET_WALLETS, payload:response.data });
+    }).catch((error) => {
+        dispath({ type:GET_ERRORS, payload:error.response.data });
+    });
+};
+
+export const deleteWallet = (reference) => async dispath => {
+    await axios.delete(`http://localhost:8090/wallet/${reference}`).then((response) => {
+    dispath({ type:DELETE_WALLET, payload:reference });
     }).catch((error) => {
         dispath({ type:GET_ERRORS, payload:error.response.data });
     });

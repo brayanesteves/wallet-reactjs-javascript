@@ -22,7 +22,6 @@ export const updateWallet = (reference, updateWallet, history) => async dispath 
 
 export const getWallets = () => async dispath => {
     await axios.get(`http://localhost:8090/wallet/find-all-order-by-priority`).then((response) => {
-    console.log(response.data);
     dispath({ type:GET_WALLETS, payload:response.data });
     }).catch((error) => {
         dispath({ type:GET_ERRORS, payload:error.response.data });
@@ -32,7 +31,6 @@ export const getWallets = () => async dispath => {
 export const getWallet = (reference) => async dispath => {
     console.log("ACA");
     await axios.get(`http://localhost:8090/wallet/${reference}`).then((response) => {
-    console.log(response.data);
     dispath({ type:GET_WALLET, payload:response.data });
     }).catch((error) => {
         dispath({ type:GET_ERRORS, payload:error.response.data });

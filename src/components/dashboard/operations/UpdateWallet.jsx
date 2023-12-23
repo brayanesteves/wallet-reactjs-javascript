@@ -9,13 +9,13 @@ function UpdateWallet({ props }) {
     const { reference } = useParams();
     
     const [state, setState] = useState({
-        reference: '',
-        name: '',
+             reference: '',
+                  name: '',
         accountManager: '',
-        description: '',
-        priority: '',
+           description: '',
+              priority: '',
         currentBalance: '',
-        errors: '',
+                errors: '',
     });
 
     useEffect(() => {
@@ -33,14 +33,13 @@ function UpdateWallet({ props }) {
         getWallet(reference);
         
         const editWallet = {
-            reference: state.reference,
-            name: state.name,
+                 reference: state.reference,
+                      name: state.name,
             accountManager: state.accountManager,
-            description: state.description,
-            priority: state.priority,
+               description: state.description,
+                  priority: state.priority,
             currentBalance: '',
         };
-        console.log(props);
         updateWallet(state.reference, editWallet, props);
         event.preventDefault();
     };

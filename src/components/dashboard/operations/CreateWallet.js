@@ -2,17 +2,18 @@ import React,     { Component }    from 'react';
 import            { createWallet } from '../../../actions/projectActions';
 import            { connect }      from 'react-redux';
 import classnames                  from 'classnames';
+
 class CreateWallet extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            name:'',
+                      name:'',
             accountManager:'',
-            description:'',
-            priority:'',
+               description:'',
+                  priority:'',
             currentBalance:'',
-            errors:'',
+                    errors:'',
         };
     }
 
@@ -30,10 +31,10 @@ class CreateWallet extends Component {
 
     submitHandler = (event) => {
         const newWallet = {
-            name:this.state.name,
+                      name:this.state.name,
             accountManager:this.state.accountManager,
-            description:this.state.description,
-            priority:this.state.priority,
+               description:this.state.description,
+                  priority:this.state.priority,
             currentBalance:'',
         };
         this.props.createWallet(newWallet, this.props.history);

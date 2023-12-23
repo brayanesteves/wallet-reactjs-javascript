@@ -1,13 +1,18 @@
-import { GET_WALLETS, DELETE_WALLET } from "../actions/types";
+import { GET_WALLETS, DELETE_WALLET, GET_WALLET } from "../actions/types";
 
 const initialState = {
-    wallets:[]
+    wallets:[],
+    wallet:'',
 };
 
 export default function(state = initialState, action) {
     switch(action.type) {
         case GET_WALLETS:
             return {...state, wallets:action.payload};
+            break;
+        
+        case GET_WALLET:
+            return {...state, wallet:action.payload};
             break;
 
         case DELETE_WALLET:

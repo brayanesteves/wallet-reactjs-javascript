@@ -1,10 +1,29 @@
-import React,        { Component } from 'react';
-import               { Link }      from 'react-router-dom';
-import DashboardItem               from './DashboardItem';
-import               { connect }   from 'react-redux';
+import React,        { Component }  from 'react';
+import               { Link }       from 'react-router-dom';
+import DashboardItem                from './DashboardItem';
+import               { connect }    from 'react-redux';
 import               { getWallets } from '../../actions/projectActions';
 
 class Dashboard extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            totalBalance:0.00,
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.wallets) {
+            let totalBalanceAux = 0.00;
+            for(let i = 0; i < nextProps.wallets.length; i++) {
+                totalBalanceAux += nextProps.wallets[i].currentBalance;
+            }
+            this.setState({
+                totalBalance:totalBalanceAux,
+            });
+        }
+    }
 
     componentDidMount() {
         this.props.getWallets();
@@ -34,7 +53,7 @@ class Dashboard extends Component {
                             <div className="card text-center">
                                 <div className="card-header bg-success text-white">
                                     <h4>Current Balance (Total)</h4>
-                                    <h1>27000 USD</h1>
+                                    <h1>{this.state.totalBalance} USD</h1>
                                 </div>
                             </div>
                             <hr />

@@ -1,6 +1,7 @@
 import axios                                                        from "axios";
 import       { DELETE_WALLET, GET_ERRORS, GET_WALLET, GET_WALLETS } from "./types";
 
+// <WALLET> //
 export const createWallet = (newWallet, history) => async dispath => {
     await axios.post(`http://localhost:8090/wallet`, newWallet).then((response) => {
         history.push('/dashboard');
@@ -44,3 +45,15 @@ export const deleteWallet = (reference) => async dispath => {
         dispath({ type:GET_ERRORS, payload:error.response.data });
     });
 };
+// <.WALLET> //
+
+// <TRANSACTION> //
+export const createTransaction = (newTransaction, walletReference, history) => async dispath => {
+    await axios.post(`http://localhost:8090/transaction/${walletReference}`, newTransaction).then((response) => {
+        history.push(`/transaction/${walletReference}`);
+    }).catch((error) => {
+        console.log(error)
+        dispath({ type:GET_ERRORS, payload:error });
+    });
+};
+// <.TRANSACTION> //

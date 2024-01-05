@@ -6,6 +6,8 @@ import Welcome                                       from './components/Welcome'
 import Dashboard                                     from './components/dashboard/Dashboard';
 import CreateWallet                                  from './components/dashboard/operations/CreateWallet';
 import UpdateWallet                                  from './components/dashboard/operations/UpdateWallet';
+import Transaction                                   from './components/transactions/Transaction';
+import AddTransaction                                from './components/transactions/operations/AddTransaction';
 import NotFound                                      from './components/shared/404';
 import                                                    './App.css';
 import                                                    'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +22,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-wallet" element={<CreateWallet />} />
           <Route path="/update-wallet/:reference" element={<UpdateWallet />} />
+          <Route path="/transactions/:reference" element={<Transaction />} />
+          <Route path="/transactions/add/:reference" element={<AddTransaction />} />
           <Route path="/404" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

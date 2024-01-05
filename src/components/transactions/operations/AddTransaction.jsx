@@ -4,6 +4,8 @@ import            { connect }             from 'react-redux';
 import classnames                         from 'classnames';
 import            { useParams }           from 'react-router-dom';
 
+import            { createTransaction }   from "../../../actions/projectActions";
+
 function AddTransaction({ props }) {
 
     const { reference } = useParams();
@@ -29,7 +31,7 @@ function AddTransaction({ props }) {
 
     const submitHandler = (event) => {
         let add = { amount:state.amount, description:state.description, type:state.type } = state;
-             
+        createTransaction(add, reference, props);
         event.preventDefault();
     };
 
@@ -70,4 +72,4 @@ function AddTransaction({ props }) {
     );
 }
 
-export default AddTransaction;
+export default connect(null, { createTransaction })(AddTransaction);

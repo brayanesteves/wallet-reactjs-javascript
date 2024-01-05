@@ -10,8 +10,7 @@ function AddTransaction({ props }) {
 
     const [state, setState] = useState({
               reference: '',
-                 amount:'',
-                   name: '',
+                 amount: '',
             description:'',
                    type: '',
                  errors: '',
@@ -28,7 +27,9 @@ function AddTransaction({ props }) {
         });
     };
 
-    const submitHandler = (event) => {        
+    const submitHandler = (event) => {
+        let add = { amount:state.amount, description:state.description, type:state.type } = state;
+             
         event.preventDefault();
     };
 
@@ -49,14 +50,14 @@ function AddTransaction({ props }) {
                                 <textarea value={state.description} onChange={(event) => changeHandler(event, 'description', false)} className="form-control form-control-lg"></textarea>
                             </div>
                             <div className="form-group">
-                                <label for="transaction-type">Transaction Type:</label>
+                                <label htmlFor="transaction-type">Transaction Type:</label>
                                 <div className="form-check form-check-inline">
-                                    <input checked className="form-check-input" type="radio" name="type" onChange={(event) => changeHandler(event, 'type', true)} id="income" value="1" selected="true" />
-                                    <label className="form-check-label" for="income">Income</label>
+                                    <input checked className="form-check-input" type="radio" name="type" onChange={(event) => changeHandler(event, 'type', false)} id="income" value="1" />
+                                    <label className="form-check-label" htmlFor="income">Income</label>
                                 </div>
                                 <div className="form-check form-check-inline">
-                                    <input className="form-check-input" type="radio" name="type" onChange={(event) => changeHandler(event, 'type', true)} id="expense" value="2" />
-                                    <label className="form-check-label" for="expense">Expense</label>
+                                    <input className="form-check-input" type="radio" name="type" onChange={(event) => changeHandler(event, 'type', false)} id="expense" value="2" />
+                                    <label className="form-check-label" htmlFor="expense">Expense</label>
                                 </div>
                             </div>
                             <input type="submit" className="btn btn-primary btn-block mt-4" />

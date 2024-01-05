@@ -3,7 +3,7 @@ import       { DELETE_WALLET, GET_ERRORS, GET_WALLET, GET_WALLETS } from "./type
 
 // <WALLET> //
 export const createWallet = (newWallet, history) => async dispath => {
-    await axios.post(`http://localhost:8090/wallet`, newWallet).then((response) => {
+    await axios.post(`/wallet`, newWallet).then((response) => {
         history.push('/dashboard');
     }).catch((error) => {
         console.log(error)
@@ -13,7 +13,7 @@ export const createWallet = (newWallet, history) => async dispath => {
 
 export const updateWallet = (reference, updateWallet, history) => async dispath => {
     
-    await axios.put(`http://localhost:8090/${reference}`, updateWallet).then((response) => {
+    await axios.put(`/${reference}`, updateWallet).then((response) => {
         
     }).catch((error) => {
         console.log(error)
@@ -22,7 +22,7 @@ export const updateWallet = (reference, updateWallet, history) => async dispath 
 };
 
 export const getWallets = () => async dispath => {
-    await axios.get(`http://localhost:8090/wallet/find-all-order-by-priority`).then((response) => {
+    await axios.get(`/wallet/find-all-order-by-priority`).then((response) => {
     dispath({ type:GET_WALLETS, payload:response.data });
     }).catch((error) => {
         dispath({ type:GET_ERRORS, payload:error.response.data });
@@ -30,8 +30,7 @@ export const getWallets = () => async dispath => {
 };
 
 export const getWallet = (reference) => async dispath => {
-    console.log("ACA");
-    await axios.get(`http://localhost:8090/wallet/${reference}`).then((response) => {
+    await axios.get(`/wallet/${reference}`).then((response) => {
     dispath({ type:GET_WALLET, payload:response.data });
     }).catch((error) => {
         dispath({ type:GET_ERRORS, payload:error.response.data });
@@ -39,7 +38,7 @@ export const getWallet = (reference) => async dispath => {
 };
 
 export const deleteWallet = (reference) => async dispath => {
-    await axios.delete(`http://localhost:8090/wallet/${reference}`).then((response) => {
+    await axios.delete(`/wallet/${reference}`).then((response) => {
     dispath({ type:DELETE_WALLET, payload:reference });
     }).catch((error) => {
         dispath({ type:GET_ERRORS, payload:error.response.data });
@@ -49,7 +48,7 @@ export const deleteWallet = (reference) => async dispath => {
 
 // <TRANSACTION> //
 export const createTransaction = (newTransaction, walletReference, history) => async dispath => {
-    await axios.post(`http://localhost:8090/transaction/${walletReference}`, newTransaction).then((response) => {
+    await axios.post(`/transaction/${walletReference}`, newTransaction).then((response) => {
         history.push(`/transaction/${walletReference}`);
     }).catch((error) => {
         console.log(error)

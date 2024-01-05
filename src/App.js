@@ -12,6 +12,8 @@ import NotFound                                      from './components/shared/4
 import                                                    './App.css';
 import                                                    'bootstrap/dist/css/bootstrap.min.css';
 import store                                         from './utils/Store';
+import                                                    'react-app-polyfill/stable';
+
 function App() {
   return (
     <Provider store={store}>
